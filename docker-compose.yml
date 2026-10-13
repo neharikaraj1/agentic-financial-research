@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  # ==========================================================
+  # FastAPI Application
+  # ==========================================================
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: financial_research_api
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      - CHROMA_PERSIST_DIRECTORY=/app/data/chroma_db
+      - CHROMA_COLLECTION_NAME=${CHROMA_COLLECTION_NAME:-financial_documents}
+      - UPLOAD_DIR=/app/data/uploads
+      - CHUNK_SIZE=${CHUNK_SIZE:-1000}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-200}
+      - MAX_ITERATIONS=${MAX_ITERATIONS:-10}
+      - VERBOSE=${VERBOSE:-false}
+      - RAGAS_EVAL_ENABLED=${RAGAS_EVAL_ENABLED:-true}
+    volumes:
+      - chroma_data:/app/data/chroma_db
+      - upload_data:/app/data/uploads
+      - log_data:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  chroma_data:
+    driver: local
+  upload_data:
+    driver: local
+  log_data:
+    driver: local
