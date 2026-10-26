@@ -1,8 +1,31 @@
-# Agentic AI Financial Research & Document Analysis System
+# 🤖 Agentic AI Financial Research & Document Analysis System
 
-> **LangGraph · LangChain · OpenAI · ChromaDB · FastAPI · Docker**
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/LangGraph-0.2.28-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/LangChain-0.2.16-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/ChromaDB-0.5.15-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Docker-ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI-GPT--4o-412991?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
+</p>
 
-A production-grade **Agentic AI system** that decomposes complex financial queries into multi-step reasoning tasks and dynamically routes them across retrieval, calculation, and analysis tools — built for the resume-level project showcase.
+<p align="center">
+  A production-grade <strong>Agentic AI system</strong> that decomposes complex financial queries into multi-step reasoning tasks and dynamically routes them across retrieval, calculation, and analysis tools.
+</p>
+
+---
+
+## 🌟 Why This Project?
+
+| Feature | Detail |
+|---------|--------|
+| 🧠 **Multi-node LangGraph Agent** | 6-node stateful graph with conditional retry loops — not a simple chain |
+| 🔍 **RAG + Live Data** | Semantic search over uploaded financials **plus** real-time stock data via yfinance |
+| 🛡️ **Anti-hallucination Loop** | Validator node checks every answer; loops back to Reasoner if grounding fails |
+| 📊 **RAGAs Evaluation** | Faithfulness, relevancy, precision & recall scoring built-in |
+| 🐳 **Production-ready** | Dockerized, health checks, structured logging, pytest test suite |
 
 ---
 
@@ -97,7 +120,7 @@ agentic-financial-research/
 
 ```bash
 # 1. Clone and enter the project
-git clone https://github.com/your-username/agentic-financial-research.git
+git clone https://github.com/neharikaraj1/agentic-financial-research.git
 cd agentic-financial-research
 
 # 2. Create a virtual environment

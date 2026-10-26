@@ -50,7 +50,7 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
 
     logger.info("=" * 60)
-    logger.info("🚀 Agentic Financial Research System starting up")
+    logger.info("[STARTUP] Agentic Financial Research System starting up")
     logger.info("=" * 60)
 
     # Ensure data directories exist
@@ -61,15 +61,15 @@ async def lifespan(app: FastAPI):
     # Warn if API key is not set
     if settings.openai_api_key.startswith("sk-placeholder"):
         logger.warning(
-            "⚠️  OPENAI_API_KEY is not set. Set it in your .env file before running queries."
+            "[WARN] OPENAI_API_KEY is not set. Set it in your .env file before running queries."
         )
     else:
-        logger.info("✅ OpenAI API key detected")
+        logger.info("[OK] OpenAI API key detected")
 
-    logger.info("✅ ChromaDB directory: {}", settings.chroma_persist_directory)
-    logger.info("✅ Upload directory: {}", settings.upload_dir)
-    logger.info("✅ Model: {}", settings.openai_model)
-    logger.info("System ready — navigate to http://localhost:{}/docs", settings.app_port)
+    logger.info("[OK] ChromaDB directory: {}", settings.chroma_persist_directory)
+    logger.info("[OK] Upload directory: {}", settings.upload_dir)
+    logger.info("[OK] Model: {}", settings.openai_model)
+    logger.info("System ready - navigate to http://localhost:{}/docs", settings.app_port)
 
     yield  # Application runs here
 
@@ -109,7 +109,7 @@ are available via the `/api/evaluate` endpoint.
         version="1.0.0",
         contact={
             "name": "Agentic Financial Research System",
-            "url": "https://github.com/your-username/agentic-financial-research",
+            "url": "https://github.com/Neharika/agentic-financial-research",
         },
         license_info={"name": "MIT"},
         lifespan=lifespan,
